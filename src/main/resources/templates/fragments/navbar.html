@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="navbarFragment">
+    <link href="/css/fragments/navbar.css" rel="stylesheet" type="text/css">
+    <script src="/js/fragments/navbar.js"></script>
+    <!-- 로그인과 회원가입 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <div class="d-flex align-items-center ml-auto"> <!-- 우측 정렬 -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/LeeMart/login}">로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/LeeMart/join}">회원가입</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/LeeMart/customer}">고객센터</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 마켓컬리 로고, 검색창, 장바구니 아이콘 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-center"> <!-- 가운데 정렬 -->
+                <!-- 로고 또는 브랜드명 -->
+                <a class="navbar-brand mr-4" href="#">LeeMart</a>
+                <!-- 검색창 -->
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="검색" aria-label="Search">
+                    <button class="btn btn-warning my-2 my-sm-0" type="submit">검색</button>
+                </form>
+            </div>
+            <div class="d-flex align-items-center ml-auto"> <!-- 우측 정렬 -->
+                <!-- 장바구니 아이콘 -->
+                <a href="#" class="nav-link"> <!-- 맨 오른쪽 정렬 -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                        <path d="M0 0h1l2.27 8H15a1 1 0 0 1 1 1 1 1 0 0 1-1 1H2a1 1 0 0 1-1-1h12a2 2 0 1 0 0-4h-1.764l-1.192-4.768A1 1 0 0 0 8.056 0H2a2 2 0 1 0 0 4h1a1 1 0 0 1 1 1 1 1 0 0 1-1 1H1a1 1 0 1 0 0 2h2a1 1 0 0 1 1 1 1 1 0 0 1-1 1H1a2 2 0 1 0 0 4h2a2.001 2.001 0 0 0 1.85-1.263l9-2A1.994 1.994 0 0 0 16 8a2 2 0 0 0-2-2h-1a1 1 0 0 1-1-1 1 1 0 0 1 1-1h3a2 2 0 1 0 0-4H5.27L4.076 1.768a1 1 0 0 0-.928.263l-3 3A1 1 0 0 0 0 6V1zm2 12a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm12 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- 홈, 신상품, 베스트, 알뜰쇼핑, 이벤트 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">신상품</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">베스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">알뜰쇼핑</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">이벤트</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</th:block>
+</html>
