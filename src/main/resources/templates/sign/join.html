@@ -8,38 +8,39 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link type="text/css" href="../../css/sign/login.css" rel="stylesheet"/>
+    <link type="text/css" href="../../css/sign/join.css" rel="stylesheet"/>
 </head>
 <body class="bg-white">
 <div class="container text-center">
     <main class="form-signin w-100 m-auto">
-        <form>
+        <form id="joinForm">
             <h1 class="h3 mb-3 fw-normal">회원가입</h1>
+            <h6 class="text-start">회원정보를 입력해주세요</h6>
             <div class="form-floating mb-1">
-                <input type="email" class="form-control" id="emailInput" placeholder="아이디(이메일)">
-                <label for="emailInput">아이디(이메일)</label>
+                <input type="email" class="form-control" id="email" placeholder="아이디(이메일)">
+                <label for="email">아이디(이메일)</label>
             </div>
             <div class="form-floating mb-1">
-                <input type="password" class="form-control" id="passwordInput" placeholder="비밀번호">
-                <label for="passwordInput">비밀번호</label>
+                <input type="password" class="form-control" id="password" placeholder="비밀번호">
+                <label for="password">비밀번호</label>
             </div>
             <div class="form-floating mb-1">
-                <input type="password" class="form-control" id="passwordCheckInput" placeholder="비밀번호 확인">
-                <label for="passwordCheckInput">비밀번호 확인</label>
+                <input type="password" class="form-control" id="passwordCheck" placeholder="비밀번호 확인">
+                <label for="passwordCheck">비밀번호 확인</label>
             </div>
             <div class="form-floating mb-1">
-                <input type="text" class="form-control" id="nameInput" placeholder="이름">
-                <label for="nameInput">이름</label>
+                <input type="text" class="form-control" id="name" placeholder="이름">
+                <label for="name">이름</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="numberInput" placeholder="전화번호">
-                <label for="numberInput">전화번호</label>
+                <input type="text" class="form-control" id="phoneNumber" placeholder="전화번호">
+                <label for="phoneNumber">전화번호</label>
             </div>
 
             <hr>
-
-            <button class="w-100 btn btn-lg btn-primary" type="submit">회원가입</button>
         </form>
+        <button class="w-100 btn btn-lg btn-warning" id="joinButton">회원가입</button>
+        <p type="button" id="form-bizJoin" style="color: blue;">사업자 회원가입하기 > </p>
     </main>
 </div>
 
@@ -47,6 +48,7 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 </script>
 
-<script src="/js/sign/login.js"></script>
+<script src="/js/sign/join.js"></script>
+<script src="/js/utils.js"></script>
 </body>
 </html>
