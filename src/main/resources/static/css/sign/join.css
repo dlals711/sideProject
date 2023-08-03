@@ -19,3 +19,11 @@ body {
 #form-findIdPw{
     color: blue;
 }
+
+.error-container {
+    text-align: left;
+}
+
+.error-message {
+    font-size: 12px;
+}

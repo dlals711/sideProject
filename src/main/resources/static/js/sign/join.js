@@ -27,7 +27,14 @@ $(document).ready(function () {
                 //location.href = '/LeeMart/login';
             },
             error: function (xhr) {
-                alert(xhr.responseText);
+                var errors = JSON.parse(xhr.responseText);
+
+                $(".error-message").text("");
+
+                Object.keys(errors).forEach(function (key) {
+                    var errorMessage = errors[key];
+                    $("#" + key + "Error").text(errorMessage).css("color", "red");
+                });
             }
         });
     });
