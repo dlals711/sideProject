@@ -14,7 +14,8 @@ public enum ExceptionEnum {
 
     // User Exception
     SECURITY(HttpStatus.UNAUTHORIZED, "UE0001", "로그인이 필요합니다"),
-    USER_PASSWORD_NOT_EQUAL(HttpStatus.BAD_REQUEST, "UE0001", "비밀번호가 일치하지 않습니다");
+    USER_PASSWORD_NOT_EQUAL(HttpStatus.BAD_REQUEST, "UE0001", "비밀번호가 일치하지 않습니다"),
+    USER_EMAIL_DUPLICATE(HttpStatus.CONFLICT, "UE0002", "이미 가입된 이메일입니다");
 
     private final HttpStatus status;
     private final String code;

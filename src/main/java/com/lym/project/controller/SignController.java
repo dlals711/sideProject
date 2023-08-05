@@ -66,6 +66,6 @@ public class SignController {
         }
 
         signService.join(form);
-        return null;
+        return ResponseEntity.ok().build();
     }
 }

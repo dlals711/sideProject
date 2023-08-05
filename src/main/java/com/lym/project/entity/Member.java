@@ -27,7 +27,7 @@ public class Member extends BaseEntity {
     @Column(length = 100)
     private String password;
     @Column(name = "phone_number",length = 11)
-    private int phoneNumber;
+    private String phoneNumber;
     @Column(length = 20)
     private String name;
     @Embedded
