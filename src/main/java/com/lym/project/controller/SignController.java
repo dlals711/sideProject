@@ -1,11 +1,9 @@
 package com.lym.project.controller;
 
-import com.lym.project.dto.sign.JoinRequest;
-import com.lym.project.exception.ApiException;
-import com.lym.project.exception.ExceptionEnum;
+import com.lym.project.form.sign.JoinForm;
+import com.lym.project.service.SignService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,6 +20,7 @@ import java.util.Map;
 @Slf4j
 @RequestMapping("/LeeMart")
 public class SignController {
+    private final SignService signService;
 
     @GetMapping("/login")
     @ResponseBody
@@ -47,7 +46,7 @@ public class SignController {
 
     @PostMapping("/join")
     @ResponseBody
-    public ResponseEntity<?> join(@RequestBody @Validated JoinRequest request,
+    public ResponseEntity<?> join(@RequestBody @Validated JoinForm form,
                                   BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             Map<String, String> errorMap = new HashMap<>();
@@ -56,14 +55,17 @@ public class SignController {
                 errorMap.put(error.getField(), error.getDefaultMessage());
             }
 
-            return new ResponseEntity<Map<String, String>>(errorMap, HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body(errorMap);
         }
 
-        if (!request.getPassword().equals(request.getPasswordCheck())) {
-            throw new ApiException(ExceptionEnum.USER_PASSWORD_NOT_EQUAL);
+        if (!form.getPassword().equals(form.getPasswordCheck())) {
+            Map<String, String> errorMap = new HashMap<>();
+            errorMap.put("passwordCheck", "비밀번호가 일치하지 않습니다");
+
+            return ResponseEntity.badRequest().body(errorMap);
         }
 
-        System.out.println(request);
+        signService.join(form);
         return null;
     }
 }

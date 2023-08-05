@@ -22,7 +22,7 @@ public class ApiExceptionAdvice {
         return ResponseEntity
                 .status(e.getError().getStatus())
                 .body(ApiResult.builder()
-                        .status("error")
+                        .status("apiError")
                         .message("")
                         .exception(apiExceptionEntity)
                         .build());

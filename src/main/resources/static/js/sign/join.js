@@ -23,18 +23,23 @@ $(document).ready(function () {
                 $('.loading-mask').addClass('d-none');
             },*/
             success: function (response) {
-                alert('회원가입에 성공했습니다');
-                //location.href = '/LeeMart/login';
+                location.href = '/LeeMart/login';
             },
             error: function (xhr) {
-                var errors = JSON.parse(xhr.responseText);
+                if (xhr.status === 400) {
+                    var errors = JSON.parse(xhr.responseText);
+                    //console.log(errors.exception);
+                    $(".error-message").text("");
 
-                $(".error-message").text("");
-
-                Object.keys(errors).forEach(function (key) {
-                    var errorMessage = errors[key];
-                    $("#" + key + "Error").text(errorMessage).css("color", "red");
-                });
+                    Object.keys(errors).forEach(function (key) {
+                        var errorMessage = errors[key];
+                        $("#" + key + "Error").text(errorMessage).css("color", "red");
+                    });
+                } else if (xhr.status === 500) {
+                    console.log('xhr.status === 500');
+                } else {
+                    console.log('xhr.status === else')
+                }
             }
         });
     });
