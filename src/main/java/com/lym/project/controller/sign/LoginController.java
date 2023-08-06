@@ -1,7 +1,8 @@
-package com.lym.project.controller;
+package com.lym.project.controller.sign;
 
 import com.lym.project.form.sign.JoinForm;
-import com.lym.project.service.SignService;
+import com.lym.project.form.sign.LoginForm;
+import com.lym.project.service.sign.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/LeeMart")
-public class SignController {
-    private final SignService signService;
+public class LoginController {
+    private final LoginService loginService;
 
     @GetMapping("/login")
     @ResponseBody
@@ -33,20 +34,9 @@ public class SignController {
         return view;
     }
 
-    @GetMapping("/join")
+    @PostMapping("/login")
     @ResponseBody
-    public ModelAndView join() {
-        log.info("join page");
-
-        ModelAndView view = new ModelAndView();
-        view.setViewName("sign/join");
-
-        return view;
-    }
-
-    @PostMapping("/join")
-    @ResponseBody
-    public ResponseEntity<?> join(@RequestBody @Validated JoinForm form,
+    public ResponseEntity<?> join(@RequestBody @Validated LoginForm form,
                                   BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             Map<String, String> errorMap = new HashMap<>();
@@ -58,14 +48,7 @@ public class SignController {
             return ResponseEntity.badRequest().body(errorMap);
         }
 
-        if (!form.getPassword().equals(form.getPasswordCheck())) {
-            Map<String, String> errorMap = new HashMap<>();
-            errorMap.put("passwordCheck", "비밀번호가 일치하지 않습니다");
-
-            return ResponseEntity.badRequest().body(errorMap);
-        }
-
-        signService.join(form);
+        loginService.login(form);
         return ResponseEntity.ok().build();
     }
 }

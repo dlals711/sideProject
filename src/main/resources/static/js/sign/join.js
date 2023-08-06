@@ -16,12 +16,14 @@ $(document).ready(function () {
             data: jsonData,
             contentType: "application/json",
             processData: false,
-            /*beforeSend: function () {
+            beforeSend: function () {
                 $('.loading-mask').removeClass('d-none');
             },
             complete: function () {
-                $('.loading-mask').addClass('d-none');
-            },*/
+                setTimeout(function() {
+                    $('.loading-mask').addClass('d-none');
+                }, 100);
+            },
             success: function (response) {
                 location.href = '/LeeMart/login';
             },
@@ -35,7 +37,7 @@ $(document).ready(function () {
                         $("#" + key + "Error").text(errorMessage).css("color", "red");
                     });
                 } else {
-                    var errorMessage = "이미 등록된 이메일입니다.";
+                    var errorMessage = JSON.parse(xhr.responseText).exception.errorMessage;
                     showToast(errorMessage,3000);
                 }
             }
@@ -46,7 +48,7 @@ $(document).ready(function () {
         var toastContainer = $("#toastContainer");
 
         var toast = $("<div class='toast' role='alert' aria-live='assertive' aria-atomic='true'></div>");
-        toast.addClass("bg-danger text-white"); // 빨간색 배경과 흰색 글자색을 적용
+        toast.addClass("bg-danger text-white");
 
         var toastBody = $("<div class='toast-body'></div>");
         toastBody.text(message);
@@ -63,7 +65,6 @@ $(document).ready(function () {
             }, duration);
         }
 
-        // 토스트가 사라진 후에 컨테이너에서 제거합니다.
         toast.on("hidden.bs.toast", function () {
             toast.remove();
         });

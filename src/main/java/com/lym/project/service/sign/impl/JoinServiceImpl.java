@@ -1,4 +1,4 @@
-package com.lym.project.service.impl;
+package com.lym.project.service.sign.impl;
 
 import com.lym.project.entity.Member;
 import com.lym.project.entity.enums.MemberGrade;
@@ -6,8 +6,8 @@ import com.lym.project.entity.enums.MemberRole;
 import com.lym.project.exception.ApiException;
 import com.lym.project.exception.ExceptionEnum;
 import com.lym.project.form.sign.JoinForm;
-import com.lym.project.repository.SignRepository;
-import com.lym.project.service.SignService;
+import com.lym.project.repository.sign.JoinRepository;
+import com.lym.project.service.sign.JoinService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,13 +16,13 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class SignServiceImpl implements SignService {
-    private final SignRepository signRepository;
+public class JoinServiceImpl implements JoinService {
+    private final JoinRepository joinRepository;
 
     private final PasswordEncoder passwordEncoder;
 
     public void join(JoinForm form) {
-        if (signRepository.existsByEmail(form.getEmail())) {
+        if (joinRepository.existsByEmail(form.getEmail())) {
             throw new ApiException(ExceptionEnum.USER_EMAIL_DUPLICATE);
         }
 
@@ -35,6 +35,6 @@ public class SignServiceImpl implements SignService {
                 .role(MemberRole.USER)
                 .build();
 
-        signRepository.save(member);
+        joinRepository.save(member);
     }
 }

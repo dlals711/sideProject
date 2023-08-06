@@ -9,6 +9,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link type="text/css" href="../../css/sign/join.css" rel="stylesheet"/>
+    <link type="text/css" href="../../css/common/common.css" rel="stylesheet"/>
 </head>
 <body class="bg-white">
 <div class="container text-center">
@@ -47,6 +48,13 @@
         <button class="w-100 btn btn-lg btn-warning" id="joinButton">회원가입</button>
         <p type="button" id="form-bizJoin" style="color: blue;">사업자 회원가입하기 > </p>
     </main>
+
+    <div class="loading-mask d-none">
+        <div class="loading-mask-overlay"></div>
+        <div class="loading-mask-content">
+            <img src="/img/loading.gif" alt="로딩 중">
+        </div>
+    </div>
 
     <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
 </div>

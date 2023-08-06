@@ -1,7 +1,7 @@
-package com.lym.project.service;
+package com.lym.project.service.sign;
 
 import com.lym.project.form.sign.JoinForm;
 
-public interface SignService {
+public interface JoinService {
     void join(JoinForm form);
 }
