@@ -18,7 +18,7 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/LeeMart")
+@RequestMapping("/sign")
 public class JoinController {
     private final JoinService joinService;
 

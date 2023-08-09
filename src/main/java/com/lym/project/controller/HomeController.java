@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @Slf4j
 public class HomeController {
-    @GetMapping("/LeeMart")
+    @GetMapping("/")
     public ModelAndView login() {
         log.info("home page");
         ModelAndView modelAndView = new ModelAndView();

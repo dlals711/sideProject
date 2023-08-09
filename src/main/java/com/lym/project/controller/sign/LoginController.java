@@ -1,6 +1,5 @@
 package com.lym.project.controller.sign;
 
-import com.lym.project.form.sign.JoinForm;
 import com.lym.project.form.sign.LoginForm;
 import com.lym.project.service.sign.LoginService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +18,7 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/LeeMart")
+@RequestMapping("/sign")
 public class LoginController {
     private final LoginService loginService;
 
@@ -34,7 +33,7 @@ public class LoginController {
         return view;
     }
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     @ResponseBody
     public ResponseEntity<?> join(@RequestBody @Validated LoginForm form,
                                   BindingResult bindingResult) {
@@ -50,5 +49,5 @@ public class LoginController {
 
         loginService.login(form);
         return ResponseEntity.ok().build();
-    }
+    }*/
 }

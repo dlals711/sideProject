@@ -11,7 +11,7 @@ $(document).ready(function () {
         var jsonData = JSON.stringify(formData);
 
         $.ajax({
-            url: "/LeeMart/join",
+            url: "/sign/join",
             method: "POST",
             data: jsonData,
             contentType: "application/json",
@@ -25,7 +25,7 @@ $(document).ready(function () {
                 }, 100);
             },
             success: function (response) {
-                location.href = '/LeeMart/login';
+                location.href = '/sign/login';
             },
             error: function (xhr) {
                 if (xhr.status === 400) {
