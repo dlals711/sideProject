@@ -1,3 +1,4 @@
+/*
 $(document).ready(function () {
     $('#loginButton').on('click', function () {
         var formData = {};
@@ -69,4 +70,4 @@ $(document).ready(function () {
             toast.remove();
         });
     }
-});
+});*/

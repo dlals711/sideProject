@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 public class HomeController {
     @GetMapping("/")
-    public ModelAndView login() {
+    public ModelAndView home() {
         log.info("home page");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("main");

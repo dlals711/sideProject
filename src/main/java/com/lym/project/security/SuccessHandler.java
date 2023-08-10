@@ -1,4 +1,4 @@
-package com.lym.project.config;
+package com.lym.project.security;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +17,7 @@ import java.io.IOException;
 public class SuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        System.out.println("SuccessHandler");
         /*UserPrincipal user = (UserPrincipal) authentication.getPrincipal();
 
         if (user.getIsApproval().equals("N")) {

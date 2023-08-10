@@ -1,4 +1,4 @@
-package com.lym.project.config;
+package com.lym.project.security;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +21,7 @@ public class FailureHandler implements AuthenticationFailureHandler {
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+        System.out.println("FailureHandler");
         final FlashMap flashMap = new FlashMap();
 
         if (exception instanceof BadCredentialsException) {
