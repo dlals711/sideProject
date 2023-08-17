@@ -1,7 +1,6 @@
-/*
 $(document).ready(function () {
     $('#loginButton').on('click', function () {
-        var formData = {};
+       /* var formData = {};
 
         $("#loginForm input").each(function() {
           var inputId = $(this).attr("id");
@@ -10,13 +9,20 @@ $(document).ready(function () {
         });
 
         var jsonData = JSON.stringify(formData);
+        console.log('jsonData : ' + jsonData);*/
 
+            var formData = {
+                email: $("#email").val(),
+                password: $("#password").val()
+            };
+
+        console.log(formData);
         $.ajax({
-            url: "/sign/login",
+            url: "/sign/procLogin",
             method: "POST",
-            data: jsonData,
+            data: JSON.stringify(formData),
             contentType: "application/json",
-            processData: false,
+            //processData: false,
             beforeSend: function () {
                 $('.loading-mask').removeClass('d-none');
             },
@@ -26,10 +32,12 @@ $(document).ready(function () {
                 }, 100);
             },
             success: function (response) {
-                location.href = '/';
+                console.log('success');
+                //location.href = '/';
             },
             error: function (xhr) {
-                if (xhr.status === 400) {
+                console.log('error');
+/*                if (xhr.status === 400) {
                     var errors = JSON.parse(xhr.responseText);
                     $(".error-message").text("");
 
@@ -40,7 +48,7 @@ $(document).ready(function () {
                 } else {
                     var errorMessage = JSON.parse(xhr.responseText).exception.errorMessage;
                     showToast(errorMessage,3000);
-                }
+                }*/
             }
         });
     });
@@ -70,4 +78,4 @@ $(document).ready(function () {
             toast.remove();
         });
     }
-});*/
+});

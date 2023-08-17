@@ -30,6 +30,7 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
 
         Member member = loginRepository.findByEmail(email);
         if (member == null) {
+            System.out.println("sout 존재하지 않는 유저입니다");
             throw new IllegalArgumentException("존재하지 않는 유저입니다");
         }
 
