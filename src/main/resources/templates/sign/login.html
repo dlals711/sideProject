@@ -14,7 +14,10 @@
 <body class="bg-white">
 <div class="container text-center">
     <main class="form-signin w-100 m-auto">
-        <form id="loginForm">
+        <div class="alert alert-danger p-3 pb-0 position-fixed bottom-0 end-0 errorAlert bg-danger text-white" style="font-size: 13px;" role="alert" th:if="error">
+            <p th:text="${exception}"></p>
+        </div>
+        <form id="loginForm" method="post" th:action="@{/sign/processLogin}">
             <h1 class="h3 mb-3 fw-normal">로그인</h1>
             <div class="form-floating mb-1">
                 <input type="email" class="form-control" id="email" name="email" placeholder="아이디(이메일)">
@@ -34,7 +37,7 @@
                 <p type="button" id="form-findIdPw">아이디(이메일)/비밀번호 찾기 > </p>
             </div>
 
-            <button class="w-100 btn btn-lg btn-warning" type="button" id="loginButton">로그인</button>
+            <button class="w-100 btn btn-lg btn-warning" type="submit">로그인</button>
         </form>
 
         <hr>

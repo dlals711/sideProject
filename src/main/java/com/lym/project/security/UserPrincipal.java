@@ -13,7 +13,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class UserSecurityEntity implements UserDetails, Serializable {
+public class UserPrincipal implements UserDetails {
     private String email;
     private String password;
     private String phoneNumber;

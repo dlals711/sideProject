@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <th:block th:replace="fragments/head::headFragment"></th:block>
 
@@ -8,7 +8,6 @@
 <script src="/js/home.js"></script>
 
 <th:block th:replace="fragments/navbar::navbarFragment"></th:block>
-
-
-</body>
+<a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
+<a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a></body>
 </html>

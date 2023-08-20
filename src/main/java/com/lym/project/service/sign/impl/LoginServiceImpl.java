@@ -5,7 +5,7 @@ import com.lym.project.exception.ApiException;
 import com.lym.project.exception.ExceptionEnum;
 import com.lym.project.form.sign.LoginForm;
 import com.lym.project.repository.sign.LoginRepository;
-import com.lym.project.security.UserSecurityEntity;
+import com.lym.project.security.UserPrincipal;
 import com.lym.project.service.sign.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
             throw new IllegalArgumentException("존재하지 않는 유저입니다");
         }
 
-        return UserSecurityEntity.builder()
+        return UserPrincipal.builder()
                 .email(member.getEmail())
                 .password(member.getPassword())
                 .name(member.getName())

@@ -5,19 +5,26 @@ import com.lym.project.security.SuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-/*@Configuration
-@RequiredArgsConstructor*/
+@Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
-    //private final FailureHandler failureHandler;
-    //private final SuccessHandler successHandler;
+    private final FailureHandler failureHandler;
+    private final SuccessHandler successHandler;
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
@@ -26,11 +33,11 @@ public class SecurityConfig {
 
         http.formLogin()
                 .loginPage("/sign/login")
-                .loginProcessingUrl("/sign/procLogin")
+                .loginProcessingUrl("/sign/processLogin")
                 .usernameParameter("email")
-                .passwordParameter("password");
-                //.successHandler(successHandler)
-                //.failureHandler(failureHandler);
+                .passwordParameter("password")
+                .successHandler(successHandler)
+                .failureHandler(failureHandler);
 
         return http.build();
     }

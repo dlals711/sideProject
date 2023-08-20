@@ -4,8 +4,8 @@ import com.lym.project.service.sign.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequiredArgsConstructor
@@ -15,14 +15,15 @@ public class LoginController {
     private final LoginService loginService;
 
     @GetMapping("/login")
-    @ResponseBody
-    public ModelAndView login() {
+    public String login(@RequestParam(value = "error", required = false) String error,
+                              @RequestParam(value = "exception", required = false) String exception,
+                              Model model) {
         log.info("login page");
 
-        ModelAndView view = new ModelAndView();
-        view.setViewName("sign/login");
+        model.addAttribute("error", error);
+        model.addAttribute("exception", exception);
 
-        return view;
+        return "sign/login";
     }
 
     /*@PostMapping("/login")

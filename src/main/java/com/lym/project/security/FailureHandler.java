@@ -8,41 +8,34 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.FlashMap;
-import org.springframework.web.servlet.FlashMapManager;
-import org.springframework.web.servlet.support.SessionFlashMapManager;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @Component
-public class FailureHandler implements AuthenticationFailureHandler {
+public class FailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         System.out.println("FailureHandler");
-        final FlashMap flashMap = new FlashMap();
+        String errorMessage;
 
-        if (exception instanceof BadCredentialsException) {
-            flashMap.put("error", "아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해주세요.");
+        if(exception instanceof BadCredentialsException) {
+            errorMessage = "아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해주세요.";
         } else if (exception instanceof InternalAuthenticationServiceException) {
-            flashMap.put("error", "내부 시스템 문제로 로그인 요청을 처리할 수 없습니다. 관리자에게 문의해주세요. ");
+            errorMessage = "내부 시스템 문제로 로그인 요청을 처리할 수 없습니다. 관리자에게 문의하세요. ";
         } else if (exception instanceof UsernameNotFoundException) {
-            flashMap.put("error", "존재하지 않는 계정입니다. 로그인 계정 정보를 확인해주세요");
+            errorMessage = "존재하지 않는 계정입니다. 회원가입 후 로그인해주세요.";
         } else if (exception instanceof AuthenticationCredentialsNotFoundException) {
-            flashMap.put("error", "인증 요청이 거부되었습니다. 관리자에게 문의해주세요.");
+            errorMessage = "인증 요청이 거부되었습니다. 관리자에게 문의하세요.";
         } else {
-            if (exception.getMessage() == null || exception.getMessage().isEmpty())
-                flashMap.put("error", "알 수 없는 오류가 발생하였습니다. 관리자에게 문의해주세요.");
-            else {
-                flashMap.put("error", "내부 서버 오류 : " +  exception.getMessage());
-            }
+            errorMessage = "알 수 없는 오류로 로그인 요청을 처리할 수 없습니다. 관리자에게 문의하세요.";
         }
 
-        final FlashMapManager flashMapManager = new SessionFlashMapManager();
-        flashMapManager.saveOutputFlashMap(flashMap, request, response);
-
-        response.sendRedirect("/sign/login");
+        errorMessage = URLEncoder.encode(errorMessage, "UTF-8");
+        setDefaultFailureUrl("/sign/login?error=true&exception="+errorMessage);
+        super.onAuthenticationFailure(request, response, exception);
     }
 }

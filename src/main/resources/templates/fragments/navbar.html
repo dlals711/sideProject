@@ -10,8 +10,6 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/sign/login}">로그인</a>
-                        <a sec:authorize="isAnonymous()" th:href="@{/sign/login}">로그인</a>
-                        <a sec:authorize="isAuthenticated()" th:href="@{/sign/logout}">로그아웃</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/sign/join}">회원가입</a>

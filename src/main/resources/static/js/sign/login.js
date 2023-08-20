@@ -1,81 +1,13 @@
 $(document).ready(function () {
-    $('#loginButton').on('click', function () {
-       /* var formData = {};
+    const errorAlert = $(".errorAlert");
 
-        $("#loginForm input").each(function() {
-          var inputId = $(this).attr("id");
-          var inputValue = $(this).val();
-          formData[inputId] = inputValue;
-        });
+    if (errorAlert.length > 0) {
+        setTimeout(function () {
+            errorAlert.css({ opacity: 0, transition: "opacity 0.5s ease-in-out" });
 
-        var jsonData = JSON.stringify(formData);
-        console.log('jsonData : ' + jsonData);*/
-
-            var formData = {
-                email: $("#email").val(),
-                password: $("#password").val()
-            };
-
-        console.log(formData);
-        $.ajax({
-            url: "/sign/procLogin",
-            method: "POST",
-            data: JSON.stringify(formData),
-            contentType: "application/json",
-            //processData: false,
-            beforeSend: function () {
-                $('.loading-mask').removeClass('d-none');
-            },
-            complete: function () {
-                setTimeout(function() {
-                    $('.loading-mask').addClass('d-none');
-                }, 100);
-            },
-            success: function (response) {
-                console.log('success');
-                //location.href = '/';
-            },
-            error: function (xhr) {
-                console.log('error');
-/*                if (xhr.status === 400) {
-                    var errors = JSON.parse(xhr.responseText);
-                    $(".error-message").text("");
-
-                    Object.keys(errors).forEach(function (key) {
-                        var errorMessage = errors[key];
-                        $("#" + key + "Error").text(errorMessage).css("color", "red");
-                    });
-                } else {
-                    var errorMessage = JSON.parse(xhr.responseText).exception.errorMessage;
-                    showToast(errorMessage,3000);
-                }*/
-            }
-        });
-    });
-
-    function showToast(message, duration) {
-        var toastContainer = $("#toastContainer");
-
-        var toast = $("<div class='toast' role='alert' aria-live='assertive' aria-atomic='true'></div>");
-        toast.addClass("bg-danger text-white");
-
-        var toastBody = $("<div class='toast-body'></div>");
-        toastBody.text(message);
-        toast.append(toastBody);
-
-        toastContainer.append(toast);
-
-        var toastObj = new bootstrap.Toast(toast[0]);
-        toastObj.show();
-
-        if (duration && duration > 0) {
             setTimeout(function () {
-                toastObj.hide();
-            }, duration);
-        }
-
-        toast.on("hidden.bs.toast", function () {
-            toast.remove();
-        });
+                errorAlert.remove();
+            }, 500);
+        }, 3000);
     }
 });
