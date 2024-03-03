@@ -26,6 +26,13 @@ public class LoginController {
         return "sign/login";
     }
 
+    @PostMapping("/processLogin")
+    public String login() {
+
+
+        return "/";
+    }
+
     /*@PostMapping("/login")
     @ResponseBody
     public ResponseEntity<?> join(@RequestBody @Validated LoginForm form,

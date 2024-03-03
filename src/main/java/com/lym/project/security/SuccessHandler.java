@@ -14,7 +14,6 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         System.out.println("SuccessHandler");
-        UserPrincipal user = (UserPrincipal) authentication.getPrincipal();
 /*
         if (user.getIsApproval().equals("N")) {
             final FlashMap flashMap = new FlashMap();

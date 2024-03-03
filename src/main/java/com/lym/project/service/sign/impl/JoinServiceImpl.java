@@ -10,7 +10,7 @@ import com.lym.project.repository.sign.JoinRepository;
 import com.lym.project.service.sign.JoinService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class JoinServiceImpl implements JoinService {
     private final JoinRepository joinRepository;
 
-    private final PasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     public void join(JoinForm form) {
         if (joinRepository.existsByEmail(form.getEmail())) {

@@ -9,13 +9,15 @@
             <div class="d-flex align-items-center ml-auto"> <!-- 우측 정렬 -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/sign/login}">로그인</a>
+                        <a class="nav-link" th:if="${memberInfo != null}" th:href="@{/sign/logout}">로그아웃</a>
+                        <a class="nav-link" th:unless="${memberInfo != null}" th:href="@{/sign/login}">로그인</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/sign/join}">회원가입</a>
+                        <a class="nav-link" th:if="${memberInfo != null}" th:href="@{/member/info}">내정보</a>
+                        <a class="nav-link" th:unless="${memberInfo != null}" th:href="@{/sign/join}">회원가입</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/sign/customer}">고객센터</a>
+                        <a class="nav-link" th:href="@{/customer}">고객센터</a>
                     </li>
                 </ul>
             </div>

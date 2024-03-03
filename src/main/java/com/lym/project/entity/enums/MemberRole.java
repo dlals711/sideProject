@@ -1,5 +1,9 @@
 package com.lym.project.entity.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum MemberRole {
-    USER, BIZ, ADMIN
+    USER,ADMIN,BIZ;
+
 }

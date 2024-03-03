@@ -30,14 +30,6 @@ public class JoinController {
     public ModelAndView join() {
         testService.test();
         log.info("join page");
-        System.out.println("adwd");
-        log.info("join page");
-        System.out.println("adwd");
-        System.out.println("adwd");
-        System.out.println("adwd");
-        System.out.println("adwd");
-        System.out.println("adwd");
-
 
         ModelAndView view = new ModelAndView();
         view.setViewName("sign/join");
