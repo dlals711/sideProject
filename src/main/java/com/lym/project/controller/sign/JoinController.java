@@ -2,6 +2,7 @@ package com.lym.project.controller.sign;
 
 import com.lym.project.form.sign.JoinForm;
 import com.lym.project.service.sign.JoinService;
+import com.lym.project.service.sign.impl.TestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +22,36 @@ import java.util.Map;
 @RequestMapping("/sign")
 public class JoinController {
     private final JoinService joinService;
+    private final TestService testService;
+
 
     @GetMapping("/join")
     @ResponseBody
     public ModelAndView join() {
+        testService.test();
         log.info("join page");
+        System.out.println("adwd");
+        log.info("join page");
+        System.out.println("adwd");
+        System.out.println("adwd");
+        System.out.println("adwd");
+        System.out.println("adwd");
+        System.out.println("adwd");
+
 
         ModelAndView view = new ModelAndView();
         view.setViewName("sign/join");
+
+        return view;
+    }
+
+    @GetMapping("/joinBiz")
+    @ResponseBody
+    public ModelAndView joinBiz() {
+        log.info("joinBiz page");
+
+        ModelAndView view = new ModelAndView();
+        view.setViewName("sign/joinBiz");
 
         return view;
     }
