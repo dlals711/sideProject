@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         show-sql: true
@@ -21,6 +21,5 @@ spring:
    # use-new-id-generator-mappings: false
 
 jwt:
-  header: Authorization
-  secret: a2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbQ==
-  token-validity-in-seconds: 86400
+  expiration_time: 86400000 #1일
+  secret: d0289a415e0ac3ba02d8ccbb4cc83d4610a57c8ba3767e08bf1d311969e9efbe

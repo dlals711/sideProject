@@ -6,15 +6,14 @@ import com.lym.project.repository.sign.LoginRepository;
 import com.lym.project.service.sign.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class LoginServiceImpl implements LoginService, UserDetailsService {
+public class LoginServiceImpl implements LoginService
+        //, UserDetailsService
+{
     private final LoginRepository loginRepository;
     //private final BCryptPasswordEncoder passwordEncoder;
 
@@ -26,9 +25,9 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
         }*/
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return loginRepository.findByemail(email).orElseThrow(() -> new IllegalArgumentException(email));
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+//        return loginRepository.findByemail(email).orElseThrow(() -> new IllegalArgumentException(email));
+//    }
 }
 
