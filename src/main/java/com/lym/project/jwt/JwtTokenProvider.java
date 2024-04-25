@@ -25,6 +25,11 @@ import java.util.stream.Collectors;
 public class JwtTokenProvider {
     private final Key key;
 
+    @Value("${jwt.access_expiration_time}")
+    private long access_expiration_time;
+    @Value("${jwt.refresh_expiration_time}")
+    private long refresh_expiration_time;
+
     // application.yml에서 secret 값 가져와서 key에 저장
     public JwtTokenProvider(@Value("${jwt.secret}") String secretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
@@ -41,7 +46,9 @@ public class JwtTokenProvider {
         long now = (new Date()).getTime();
 
         // Access Token 생성
-        Date accessTokenExpiresIn = new Date(now + 86400000);
+        Date accessTokenExpiresIn = new Date(now + access_expiration_time);
+        Date refreshTokenExpiresIn = new Date(now + refresh_expiration_time);
+
         String accessToken = Jwts.builder()
                 .setSubject(authentication.getName())
                 .claim("auth", authorities)
@@ -51,7 +58,7 @@ public class JwtTokenProvider {
 
         // Refresh Token 생성
         String refreshToken = Jwts.builder()
-                .setExpiration(new Date(now + 86400000))
+                .setExpiration(refreshTokenExpiresIn)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
 

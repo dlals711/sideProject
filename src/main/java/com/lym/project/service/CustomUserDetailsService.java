@@ -30,9 +30,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     // 해당하는 User 의 데이터가 존재한다면 UserDetails 객체로 만들어서 return
     private UserDetails createUserDetails(Member2 member) {
+        log.info("member: " + member.getEmail());
+        log.info("member: " + member.getPassword());
+        log.info("member: " + member.getRoles());
+
         List<String> roles = member.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
+
+        log.info("roles.get(0) : " + roles.get(0));
 
         return User.builder()
                 .username(member.getEmail())
