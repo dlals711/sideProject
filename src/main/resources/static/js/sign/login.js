@@ -1,5 +1,8 @@
 $(document).ready(function () {
-    const errorAlert = $(".errorAlert");
+    $('#loginButton').on('click', function () {
+        alert('loginButton');
+     });
+/*    const errorAlert = $(".errorAlert");
 
     if (errorAlert.length > 0) {
         setTimeout(function () {
@@ -9,5 +12,5 @@ $(document).ready(function () {
                 errorAlert.remove();
             }, 500);
         }, 3000);
-    }
+    }*/
 });

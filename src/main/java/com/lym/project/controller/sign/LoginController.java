@@ -28,7 +28,7 @@ public class LoginController {
 
     @PostMapping("/processLogin")
     public String login() {
-
+        System.out.println("h2");
 
         return "/";
     }

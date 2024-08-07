@@ -42,11 +42,6 @@ public class SecurityConfig2  {
 
         http.addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
 
-//        http.exceptionHandling((exceptionHandling) -> exceptionHandling
-//                .authenticationEntryPoint(authenticationEntryPoint)
-//                .accessDeniedHandler(accessDeniedHandler)
-//       );
-
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest().authenticated()

@@ -8,6 +8,10 @@ spring:
     password: PROD_USER
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
   jpa:
     hibernate:
       ddl-auto: create

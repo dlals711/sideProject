@@ -19,6 +19,17 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/customer}">고객센터</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            시스템관리
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" th:href="@{/admin/code}">코드관리</a></li>
+                            <li><a class="dropdown-item" href="#">하위 메뉴 2</a></li>
+                            <li><a class="dropdown-item" href="#">하위 메뉴 3</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
