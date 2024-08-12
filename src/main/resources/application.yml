@@ -12,6 +12,10 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
 
+  sql:
+    init:
+      mode: always
+
   jpa:
     hibernate:
       ddl-auto: create
@@ -23,6 +27,8 @@ spring:
       #naming:
         #physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
    # use-new-id-generator-mappings: false
+    defer-datasource-initialization: true
+    generate-ddl: true
 
 jwt:
   access_expiration_time: 1800000 #30분
