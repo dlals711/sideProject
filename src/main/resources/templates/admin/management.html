@@ -35,16 +35,16 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="loadContent('/content1')">Tab 1</a>
+                        <a class="nav-link" href="#" onclick="loadContent('/admin/content2')">Tab 1</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="loadContent('/content2')">Tab 2</a>
+                        <a class="nav-link" href="#" onclick="loadContent('/admin/content3')">Tab 2</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div id="content-area" th:include="content :: contentFragment1"></div>
+            <div id="content-area" th:include="admin/content :: contentFragment1"></div>
         </main>
     </div>
 </div>
